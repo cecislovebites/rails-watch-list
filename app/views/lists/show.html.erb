@@ -1,3 +1,17 @@
 <h1> <%= @list.name %></h1>
+<p> <% @list.movies.each do |movie|%>
+      <%= movie.title %>
+      <%= image_tag movie.poster_url %>
+      <%= movie.overview %>
+      <% end %>
+</p>
 
-  <p> <%= link_to 'Back to all lists', lists_path %></p>
+
+
+<p> <%= link_to 'Back to all lists', lists_path %>
+    <%= link_to 'Delete the list', list_path(@list),
+     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+     %>
+
+     <%= link_to 'Add a bookmark',  new_list_bookmark_path(@list, @bookmark) %>
+</p>
